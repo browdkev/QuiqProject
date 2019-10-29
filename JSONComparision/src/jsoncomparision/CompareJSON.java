@@ -11,7 +11,8 @@ import com.google.gson.JsonObject;
 import java.util.Set;
 
 /**
- * Class takes two JSON elements and compares their similarity and outputs results to console
+ * Class takes two JSON elements and compares their similarity and outputs
+ * results to console
  * @author Kevin
  */
 public class CompareJSON {
@@ -40,9 +41,12 @@ public class CompareJSON {
      * twice to compare master to child and child to master
      */
     public void Compare() {
+        //compare both directions (master>child, child>master)
         CompareRecursive(master, child);
         CompareRecursive(child, master);
+        //calculate similarity
         double similarity = ((double) iterations - (double) differences) / (double) iterations;
+        //reset global variables to prepare for another call
         iterations = 0;
         differences = 0;
         System.out.println("The files have a similarity of " + similarity);
@@ -57,6 +61,8 @@ public class CompareJSON {
      * @param child
      */
     private void CompareRecursive(JsonElement master, JsonElement child) {
+        //determining type of JSON element
+        //calls recursivly if type is not primative
         if (master.isJsonObject()) {
             if (child == null) {
                 iterations++;
@@ -102,11 +108,17 @@ public class CompareJSON {
         }
     }
 
-    //setters to change JSON files and compare different files
+    /**
+     * Setter to change master JSON element
+     * @param master 
+     */
     public void setMaster(JsonElement master) {
         this.master = master;
     }
-
+    /**
+     * Setter to change child JSON element
+     * @param child 
+     */
     public void setChild(JsonElement child) {
         this.child = child;
     }
