@@ -25,7 +25,6 @@ public class Client {
     public static void main(String[] args) {
         // TODO code application logic here
         importJson();
-
     }
     /**
      * Method gets file locations from user, reads in JSONs and compares them using
@@ -51,7 +50,6 @@ public class Client {
             CompareJSON compare = new CompareJSON(master, child);
             //call comparison on JSON files
             compare.Compare();
-            
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
